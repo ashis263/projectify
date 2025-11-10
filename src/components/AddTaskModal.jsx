@@ -1,4 +1,4 @@
-const AddTaskModal = () => {
+const AddTaskModal = ({ onCancelClick }) => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-900/10 backdrop-blur p-4 text-white absolute top-0 left-0 w-full">
       <div className="w-full max-w-md rounded-lg bg-gray-800 shadow-xl">
@@ -73,6 +73,7 @@ const AddTaskModal = () => {
             <div className="flex justify-end space-x-3">
               <button
                 type="button"
+                onClick={onCancelClick}
                 className="rounded-md border border-gray-600 px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 Cancel

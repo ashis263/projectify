@@ -1,8 +1,11 @@
 import AddIcon from "./svgIcons/AddIcon";
 
-const AddStatusButton = () => {
+const AddStatusButton = ({ onAddClick }) => {
   return (
-    <button className="flex items-center rounded-md bg-gray-700 px-4 py-2 text-white">
+    <button
+      onClick={onAddClick}
+      className="flex items-center rounded-md bg-gray-700 px-4 py-2 text-white"
+    >
       <AddIcon />
       Add
     </button>

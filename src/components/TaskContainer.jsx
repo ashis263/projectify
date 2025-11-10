@@ -1,8 +1,10 @@
+import { useState } from "react";
 import AddTaskButton from "./AddTaskButton";
 import AddTaskModal from "./AddTaskModal";
 import TaskCategory from "./TaskCategory";
 
 const TaskContainer = () => {
+  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
   const taskCategories = [
     {
       id: 1,
@@ -26,7 +28,9 @@ const TaskContainer = () => {
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold">Projectify</h2>
         <div className="flex space-x-2">
-          <AddTaskButton />
+          <AddTaskButton
+            onAddClick={() => setIsAddTaskModalOpen(!isAddTaskModalOpen)}
+          />
         </div>
       </div>
       <div className="-mx-2 mb-6 flex flex-wrap">
@@ -34,7 +38,7 @@ const TaskContainer = () => {
           <TaskCategory key={category.id} label={category.label} />
         ))}
       </div>
-      <AddTaskModal />
+      {isAddTaskModalOpen && <AddTaskModal onCancelClick={() => setIsAddTaskModalOpen(!isAddTaskModalOpen)} />}
     </div>
   );
 };
