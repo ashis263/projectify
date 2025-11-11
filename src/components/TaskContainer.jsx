@@ -38,7 +38,7 @@ const TaskContainer = () => {
           <TaskCategory key={category.id} label={category.label} />
         ))}
       </div>
-      {isAddTaskModalOpen && <AddTaskModal onCancelClick={() => setIsAddTaskModalOpen(!isAddTaskModalOpen)} />}
+      {isAddTaskModalOpen && <AddTaskModal onModalToggle={() => setIsAddTaskModalOpen(!isAddTaskModalOpen)} />}
     </div>
   );
 };
