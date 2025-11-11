@@ -1,6 +1,6 @@
 const AddTaskModal = ({ onCancelClick }) => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-900/10 backdrop-blur p-4 text-white absolute top-0 left-0 w-full">
+    <div className="flex min-h-screen items-center justify-center bg-gray-900/90 p-4 text-white absolute top-0 left-0 w-full">
       <div className="w-full max-w-md rounded-lg bg-gray-800 shadow-xl">
         <div className="p-6">
           <h2 className="mb-6 text-2xl font-bold text-green-400">
