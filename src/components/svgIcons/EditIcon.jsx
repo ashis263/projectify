@@ -1,6 +1,7 @@
-const EditIcon = () => {
+const EditIcon = ({ onEdit, task }) => {
   return (
     <svg
+      onClick={() => onEdit(task)}
       className="h-4 w-4 cursor-pointer text-zinc-300"
       fill="none"
       stroke="currentColor"

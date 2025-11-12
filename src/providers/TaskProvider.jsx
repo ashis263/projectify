@@ -4,7 +4,6 @@ import taskReducer from "../reducers/taskReducer";
 
 const TaskProvider = ({ children }) => {
   const [tasks, tasksDispatch] = useReducer(taskReducer, []);
-  console.log(tasks);
   return (
     <TaskContext.Provider value={{ tasks, tasksDispatch }}>
       {children}
