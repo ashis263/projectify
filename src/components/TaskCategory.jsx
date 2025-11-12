@@ -1,11 +1,16 @@
 import DropdownIcon from "./svgIcons/DropdownIcon";
 import Task from "./Task";
 import useTasks from "../hooks/useTasks";
+import { useState } from "react";
 
 const TaskCategory = ({ label, onEdit, onDelete }) => {
+  const [isSorted, setIsSorted] = useState(false);
   const { tasks } = useTasks();
   const allTasks = tasks.toShow;
   const filteredTasks = allTasks.filter((task) => task.category === label);
+  if (isSorted) {
+    filteredTasks.sort((a, b) => a.dueDate.localeCompare(b.dueDate));
+  }
   const bgColor =
     (label === "Todo" && "bg-indigo-500") ||
     (label === "In Progress" && "bg-yellow-500") ||
@@ -18,11 +23,16 @@ const TaskCategory = ({ label, onEdit, onDelete }) => {
           <h3 className="text-lg font-semibold">
             {label} ({filteredTasks.length})
           </h3>
-          <DropdownIcon />
+          <DropdownIcon onSortClick={() => setIsSorted(true)} />
         </div>
         <div>
           {filteredTasks.map((task) => (
-            <Task key={task.id} task={task} onEdit={onEdit} onDelete={onDelete} />
+            <Task
+              key={task.id}
+              task={task}
+              onEdit={onEdit}
+              onDelete={onDelete}
+            />
           ))}
         </div>
       </div>
