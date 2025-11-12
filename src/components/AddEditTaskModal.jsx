@@ -8,6 +8,7 @@ const AddEditTaskModal = ({ onModalClose, mode, currentTask }) => {
   const handleChange = (e) => {
     setTask({
       ...task,
+      id: crypto.randomUUID(),
       [e.target.name]: e.target.value,
     });
   };
