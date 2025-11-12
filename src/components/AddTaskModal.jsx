@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useTasks from "../hooks/useTasks";
+import { ToastContainer, toast, Slide } from "react-toastify";
 
 const initialTask = {
   id: crypto.randomUUID(),
@@ -19,10 +20,15 @@ const AddTaskModal = ({ onModalToggle }) => {
     });
   };
   const handleCreateTask = (e) => {
+    const { taskName, description, dueDate } = task;
     e.preventDefault();
+    if (!taskName || !description || !dueDate) {
+      toast.warn("Please add all the information!");
+      return;
+    }
     tasksDispatch({
       type: "add",
-      payload: task
+      payload: task,
     });
     onModalToggle();
   };
@@ -124,6 +130,19 @@ const AddTaskModal = ({ onModalToggle }) => {
           </form>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Slide}
+      />
     </div>
   );
 };
