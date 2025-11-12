@@ -3,7 +3,10 @@ import EditIcon from "./svgIcons/EditIcon";
 
 const Task = ({ task, onEdit, onDelete }) => {
   const { id, taskName, description, dueDate } = task;
-  const date = new Date(dueDate).toString();
+  const date = new Date(dueDate);
+  const longDate = `${date.getDate()} ${date.toLocaleString("en-US", {
+    month: "long",
+  })}, ${date.getFullYear()}`;
   return (
     <div className="mb-4 rounded-lg bg-gray-800 p-4">
       <div className="flex justify-between">
@@ -18,7 +21,7 @@ const Task = ({ task, onEdit, onDelete }) => {
       </div>
       <p className="mb-2 text-sm text-zinc-200">{description}</p>
 
-      <p className="mt-6 text-xs text-zinc-400">{date}</p>
+      <p className="mt-6 text-xs text-zinc-400">{longDate}</p>
     </div>
   );
 };
