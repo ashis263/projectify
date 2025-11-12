@@ -4,7 +4,8 @@ import useTasks from "../hooks/useTasks";
 
 const TaskCategory = ({ label, onEdit, onDelete }) => {
   const { tasks } = useTasks();
-  const filteredTasks = tasks.filter((task) => task.category === label);
+  const allTasks = tasks.toShow;
+  const filteredTasks = allTasks.filter((task) => task.category === label);
   const bgColor =
     (label === "Todo" && "bg-indigo-500") ||
     (label === "In Progress" && "bg-yellow-500") ||

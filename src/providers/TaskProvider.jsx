@@ -3,7 +3,10 @@ import { TaskContext } from "../contexts/context";
 import taskReducer from "../reducers/taskReducer";
 
 const TaskProvider = ({ children }) => {
-  const [tasks, tasksDispatch] = useReducer(taskReducer, []);
+  const [tasks, tasksDispatch] = useReducer(taskReducer, {
+    all: [],
+    toShow: [],
+  });
   return (
     <TaskContext.Provider value={{ tasks, tasksDispatch }}>
       {children}
