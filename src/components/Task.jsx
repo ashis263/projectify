@@ -13,7 +13,7 @@ const Task = ({ task, onEdit }) => {
 
         <div className="flex gap-2">
           <DeleteIcon />
-          <EditIcon onEdit={onEdit} task={task} />
+          <EditIcon onEdit={()=> onEdit(task)} />
         </div>
       </div>
       <p className="mb-2 text-sm text-zinc-200">{description}</p>
