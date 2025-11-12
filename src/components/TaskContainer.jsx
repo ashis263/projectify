@@ -28,7 +28,7 @@ const TaskContainer = () => {
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
   const [currentTask, setCurrentTask] = useState(initialTask);
   const [mode, setMode] = useState("Create");
-  const { tasksDispatch } = useTasks();
+  const { tasks, tasksDispatch } = useTasks();
 
   const handleModalClose = () => {
     setIsAddTaskModalOpen(false);
@@ -64,6 +64,9 @@ const TaskContainer = () => {
           />
         ))}
       </div>
+      {
+        !tasks.toShow.length && <h3 className="text-5xl font-bold text-center py-20 text-yellow-300 font-mono">Task list is empty!</h3>
+      }
       {isAddTaskModalOpen && (
         <AddTaskModal
           onModalClose={handleModalClose}
