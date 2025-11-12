@@ -28,6 +28,14 @@ const taskReducer = (tasks, action) => {
         toShow: tasks.toShow.filter((item) => item.id !== action.payload),
       };
     }
+    case "search": {
+      return {
+        ...tasks,
+        toShow: tasks.all.filter((item) =>
+          item.taskName.toLowerCase().includes(action.payload)
+        ),
+      };
+    }
   }
 };
 
