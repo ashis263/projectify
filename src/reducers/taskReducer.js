@@ -11,7 +11,7 @@ const taskReducer = (tasks, action) => {
         }
       });
     case "delete":
-      return tasks.filter((item) => item.id !== action.payload.id);
+      return tasks.filter((item) => item.id !== action.payload);
   }
 };
 

@@ -2,7 +2,7 @@ import DropdownIcon from "./svgIcons/DropdownIcon";
 import Task from "./Task";
 import useTasks from "../hooks/useTasks";
 
-const TaskCategory = ({ label, onEdit }) => {
+const TaskCategory = ({ label, onEdit, onDelete }) => {
   const { tasks } = useTasks();
   const filteredTasks = tasks.filter((task) => task.category === label);
   const bgColor =
@@ -21,7 +21,7 @@ const TaskCategory = ({ label, onEdit }) => {
         </div>
         <div>
           {filteredTasks.map((task) => (
-            <Task key={task.id} task={task} onEdit={onEdit} />
+            <Task key={task.id} task={task} onEdit={onEdit} onDelete={onDelete} />
           ))}
         </div>
       </div>

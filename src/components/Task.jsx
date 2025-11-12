@@ -1,8 +1,8 @@
 import DeleteIcon from "./svgIcons/DeleteIcon";
 import EditIcon from "./svgIcons/EditIcon";
 
-const Task = ({ task, onEdit }) => {
-  const { taskName, description, dueDate } = task;
+const Task = ({ task, onEdit, onDelete }) => {
+  const { id, taskName, description, dueDate } = task;
   const date = new Date(dueDate).toString();
   return (
     <div className="mb-4 rounded-lg bg-gray-800 p-4">
@@ -12,7 +12,7 @@ const Task = ({ task, onEdit }) => {
         </h4>
 
         <div className="flex gap-2">
-          <DeleteIcon />
+          <DeleteIcon onDelete={() =>onDelete(id)} />
           <EditIcon onEdit={()=> onEdit(task)} />
         </div>
       </div>

@@ -1,6 +1,7 @@
-const DeleteIcon = () => {
+const DeleteIcon = ({ onDelete }) => {
   return (
     <svg
+      onClick={onDelete}
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"

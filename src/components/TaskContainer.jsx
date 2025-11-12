@@ -3,29 +3,33 @@ import AddTaskButton from "./AddTaskButton";
 import AddTaskModal from "./AddEditTaskModal";
 import TaskCategory from "./TaskCategory";
 import initialTask from "../data/initialTask";
+import useTasks from "../hooks/useTasks";
+
+const taskCategories = [
+  {
+    id: 1,
+    label: "Todo",
+  },
+  {
+    id: 2,
+    label: "In Progress",
+  },
+  {
+    id: 3,
+    label: "Done",
+  },
+  {
+    id: 4,
+    label: "Revise",
+  },
+];
 
 const TaskContainer = () => {
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
   const [currentTask, setCurrentTask] = useState(initialTask);
   const [mode, setMode] = useState("Create");
-  const taskCategories = [
-    {
-      id: 1,
-      label: "Todo",
-    },
-    {
-      id: 2,
-      label: "In Progress",
-    },
-    {
-      id: 3,
-      label: "Done",
-    },
-    {
-      id: 4,
-      label: "Revise",
-    },
-  ];
+  const { tasksDispatch } = useTasks();
+
   const handleModalClose = () => {
     setIsAddTaskModalOpen(false);
     setCurrentTask(initialTask);
@@ -35,6 +39,12 @@ const TaskContainer = () => {
     setIsAddTaskModalOpen(true);
     setCurrentTask(task);
     setMode("Edit");
+  };
+  const handleDelete = (id) => {
+    tasksDispatch({
+      type: "delete",
+      payload: id,
+    });
   };
   return (
     <div className="mx-auto max-w-7xl p-6">
@@ -50,6 +60,7 @@ const TaskContainer = () => {
             key={category.id}
             label={category.label}
             onEdit={onEdit}
+            onDelete={handleDelete}
           />
         ))}
       </div>
